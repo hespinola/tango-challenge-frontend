@@ -1,13 +1,20 @@
 import React from 'react';
 import './App.css';
-
-const buttonClicked = (fibo: number) => {
-  
-}
+import { Fibonacci } from './interface/Fibonacci';
 
 function App() {
   const [fibonacci, setFibonacci] = React.useState<number>(0)
   const [result, setResult] = React.useState<number>(0)
+
+  const buttonClicked = async (fibo: number) => {
+    try {
+      const result = await fetch(`http://localhost:5050/v1/fibonacci?value=${fibo}`)
+      const response = await result.json() as Fibonacci
+      setResult(response.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <div className="App">
