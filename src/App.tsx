@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+const buttonClicked = (fibo: number) => {
+  
+}
+
 function App() {
+  const [fibonacci, setFibonacci] = React.useState<number>(0)
+  const [result, setResult] = React.useState<number>(0)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Calculate Fibonacci</h2>
+      <div className="Form">
+        <input type="number" placeholder="6" onChange={(event) => setFibonacci(Number(event.target.value))} />
+        <button onClick={() => buttonClicked(fibonacci)}>Calculate</button>
+      </div>
+      <div className="Result">
+        Fibonacci Result: <span>{result}</span>
+      </div>
     </div>
   );
 }
